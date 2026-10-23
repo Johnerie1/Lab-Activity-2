@@ -1,34 +1,43 @@
+
 public class Main {
+
+    static void printDetails(Vehicle vehicle) {
+        vehicle.printDetails();
+    }
+
     public static void main(String[] args) {
-        
-        Vehicle vehicle1 = new Vehicle("Toyota", "Corolla", 1995);
 
-        
-        Vehicle vehicle2 = new Vehicle("Honda", "Civic", 2018);
+        Car car = new Car("Toyota", "Vios", 2020, 4);
+        Truck truck = new Truck("Isuzu", "Elf", 2021);
+        Motorcycle motor = new Motorcycle("Yamaha", "Mio", 2022, "Automatic");
 
-        
-        Vehicle vehicle3 = new Vehicle("Tesla", "Model 3", 2023);
+        // DEMO 1: Parent Reference
+        System.out.println("=== 1. Parent Reference ===");
 
-        
-        System.out.println("--- Vehicle 1 ---");
-        vehicle1.displayInfo();
-        System.out.println("Age: " + vehicle1.calculateAge());
-        System.out.println("Vintage: " + vehicle1.isVintage());
+        Vehicle vehicle = car;
+        vehicle.printDetails();
 
-        System.out.println();
+        vehicle = truck;
+        vehicle.printDetails();
 
-        
-        System.out.println("--- Vehicle 2 ---");
-        vehicle2.displayInfo();
-        System.out.println("Age: " + vehicle2.calculateAge());
-        System.out.println("Vintage: " + vehicle2.isVintage());
+        vehicle = motor;
+        vehicle.printDetails();
 
-        System.out.println();
+        // DEMO 2: Method Parameter
+        System.out.println("\n=== 2. Method Parameter ===");
 
-        
-        System.out.println("--- Vehicle 3 ---");
-        vehicle3.displayInfo();
-        System.out.println("Age: " + vehicle3.calculateAge());
-        System.out.println("Vintage: " + vehicle3.isVintage());
+        printDetails(car);
+        printDetails(truck);
+        printDetails(motor);
+
+        // DEMO 3: Polymorphic Array
+        System.out.println("\n=== 3. Polymorphic Array ===");
+
+        Vehicle[] vehicles = {car, truck, motor};
+
+        for (Vehicle v : vehicles) {
+            v.printDetails();
+            System.out.println();
+        }
     }
 }

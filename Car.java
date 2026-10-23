@@ -1,14 +1,15 @@
-public class Car extends Vehicle {
-    int numberOfWheels;
 
-    public Car(String brand, String model, int year, int numberOfWheels) {
+public class Car extends Vehicle {
+    int doors;
+
+    public Car(String brand, String model, int year, int doors) {
         super(brand, model, year);
-        this.numberOfWheels = numberOfWheels;
+        this.doors = doors;
     }
 
     @Override
     public void printDetails() {
         super.printDetails();
-        System.out.println("Number of Wheels: " + numberOfWheels);
+        System.out.println("Number of Doors: " + doors);
     }
 }

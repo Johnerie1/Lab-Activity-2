@@ -1,34 +1,39 @@
 public class Main {
+
+    public static void performService(Serviceable item) {
+        item.service();
+    }
+
     public static void main(String[] args) {
-        
-        Vehicle vehicle1 = new Vehicle("Toyota", "Corolla", 1995);
 
-        
-        Vehicle vehicle2 = new Vehicle("Honda", "Civic", 2018);
+        Car car = new Car("Toyota", "Vios", 2020, 4);
+        Motorcycle motorcycle = new Motorcycle("Yamaha", "Mio", 2022, "Automatic");
+        Truck truck = new Truck("Isuzu", "Elf", 2021);
+        Printer printer = new Printer();
 
-        
-        Vehicle vehicle3 = new Vehicle("Tesla", "Model 3", 2023);
+        // Serviceable Array
+        Serviceable[] serviceItems = {
+            car, motorcycle, truck, printer
+        };
 
-        
-        System.out.println("--- Vehicle 1 ---");
-        vehicle1.displayInfo();
-        System.out.println("Age: " + vehicle1.calculateAge());
-        System.out.println("Vintage: " + vehicle1.isVintage());
+        System.out.println("=== SERVICEABLE ITEMS ===");
 
-        System.out.println();
+        for (Serviceable item : serviceItems) {
+            performService(item);
+            System.out.println();
+        }
 
-        
-        System.out.println("--- Vehicle 2 ---");
-        vehicle2.displayInfo();
-        System.out.println("Age: " + vehicle2.calculateAge());
-        System.out.println("Vintage: " + vehicle2.isVintage());
+        // Vehicle Array
+        Vehicle[] vehicles = {
+            car, motorcycle, truck
+        };
 
-        System.out.println();
+        System.out.println("=== VEHICLE INFORMATION ===");
 
-        
-        System.out.println("--- Vehicle 3 ---");
-        vehicle3.displayInfo();
-        System.out.println("Age: " + vehicle3.calculateAge());
-        System.out.println("Vintage: " + vehicle3.isVintage());
+        for (Vehicle vehicle : vehicles) {
+            vehicle.displayInfo();
+            vehicle.move();
+            System.out.println();
+        }
     }
 }

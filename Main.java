@@ -1,4 +1,9 @@
 public class Main {
+
+    public static void performService(Serviceable item) {
+        item.service();
+    }
+
     public static void main(String[] args) {
        
         Vehicle v1 = new Vehicle("Toyota", "Corolla", 2015);

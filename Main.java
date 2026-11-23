@@ -5,35 +5,41 @@ public class Main {
     }
 
     public static void main(String[] args) {
+       
+        Vehicle v1 = new Vehicle("Toyota", "Corolla", 2015);
+        Vehicle v2 = new Vehicle("Ford", "Mustang", 1967);
+        Vehicle v3 = new Vehicle("Tesla", "Model 3", 2022);
 
-        Car car = new Car("Toyota", "Vios", 2020, 4);
-        Motorcycle motorcycle = new Motorcycle("Yamaha", "Mio", 2022, "Automatic");
-        Truck truck = new Truck("Isuzu", "Elf", 2021);
-        Printer printer = new Printer();
-
-        // Serviceable Array
-        Serviceable[] serviceItems = {
-            car, motorcycle, truck, printer
-        };
-
-        System.out.println("=== SERVICEABLE ITEMS ===");
-
-        for (Serviceable item : serviceItems) {
-            performService(item);
-            System.out.println();
+        Vehicle[] vehicles = {v1, v2, v3};
+        for (Vehicle v : vehicles) {
+            v.displayInfo();
+            System.out.println("Getters -> Brand: " + v.getBrand() + ", Model: " + v.getModel() + ", Year: " + v.getYear());
+            System.out.println("Age: " + v.calculateAge() + " | Vintage: " + v.isVintage());
+            System.out.println("--------------------------------------------------");
         }
 
-        // Vehicle Array
-        Vehicle[] vehicles = {
-            car, motorcycle, truck
-        };
+        
+        System.out.println("=== Testing setYear and Constructor Validation ===");
 
-        System.out.println("=== VEHICLE INFORMATION ===");
+        
+        boolean r1 = v1.setYear(2000);
+        System.out.println("setYear(2000) -> " + r1 + "; year is " + v1.getYear() 
+                           + "; age " + v1.calculateAge() + "; vintage " + v1.isVintage());
 
-        for (Vehicle vehicle : vehicles) {
-            vehicle.displayInfo();
-            vehicle.move();
-            System.out.println();
-        }
+        
+        boolean r2 = v1.setYear(1885);
+        System.out.println("setYear(1885) -> " + r2 + "; year remains " + v1.getYear());
+
+        
+        boolean r3 = v1.setYear(2027);
+        System.out.println("setYear(2027) -> " + r3 + "; year remains " + v1.getYear());
+
+        
+        Vehicle invalid1 = new Vehicle("VintageTest", "Old", 1885);
+        System.out.println("New vehicle with year 1885 -> Initial year is " + invalid1.getYear());
+
+        
+        Vehicle invalid2 = new Vehicle("FutureTest", "New", 2027);
+        System.out.println("New vehicle with year 2027 -> Initial year is " + invalid2.getYear());
     }
 }
